@@ -75,8 +75,12 @@ while(true){
             break;
 
         case 3:
-            rlutil::cls();
-            cout<<"La puntuación más alta es de: "<<puntajeMaximo<<endl;
+            Recuadro();
+            rlutil::locate(3,7);
+            cout<<"La puntuacion mas alta es de: "<<puntajeMaximo;
+            rlutil::locate(2,19);
+            system("pause");
+            system("cls");
             break;
 
         case 4:
@@ -84,7 +88,8 @@ while(true){
             break;
 
         default:
-            rlutil::cls();
+            Recuadro();
+            rlutil::locate(2,5);
             cout<<"Opción es incorrecta. Por favor ingrese enter y vuelva a ingresar una opción..."<<endl;
             system("pause");
             system("cls");
