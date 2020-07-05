@@ -465,7 +465,7 @@ int juego1jugador(){
             rlutil::locate(5,11);
             cout<<"Lanzamiento N: "<<lanzamiento;
             rlutil::locate(2,19);
-           system("pause");
+            system("pause");
             system("cls");
             //cargarDados(vecDados);
             tirarDados (vecDados, tam);
@@ -480,11 +480,12 @@ int juego1jugador(){
             puntajeRonda=funcionPuntos(vecDados);
 
             if (puntajeRonda==50 && lanzamiento==1){
+                system("pause");
                 system("cls");
                 rlutil::setBackgroundColor(rlutil::WHITE);
                 rlutil::setColor(rlutil::BLACK);
                 Recuadro();
-                rlutil::locate(5,6);
+                rlutil::locate(2,6);
                 cout<<"GENERALA SERVIDA!! FIN DEL JUEGO, EL GANADOR ES: "<<jugador;
                 rlutil::setBackgroundColor(rlutil::MAGENTA);
                 rlutil::setColor(rlutil::WHITE);
@@ -544,7 +545,6 @@ int juego1jugador(){
                 system("cls");
                 while ( getchar() != '\n');
                 lanzamiento=3;
-
                 puntajeRonda=funcionPuntos(vecDados);
                 break;
             }
@@ -573,10 +573,14 @@ int juego1jugador(){
         lanzamiento=1;
         ronda++;
         if (ronda>=11) {
-            rlutil::locate(9,10);
-            cout<<"FIN DEL JUEGO";
-
-
+            Recuadro();
+            rlutil::locate(8,9);
+            cout<<"FIN DEL JUEGO de: "<<jugador;
+            rlutil::locate(8,12);
+            cout<<"Puntaje total: "<<puntajeTotal;
+            rlutil::locate(2,19);
+            system("pause");
+            system("cls");
             }
     }
 return puntajeTotal;
@@ -607,76 +611,98 @@ int juego2jugadores(){
 
 while (ronda<=10 && generalaServida==false){
     while (lanzamiento<3){
-        cout<<"Turno de "<<jugador1<<endl;
-        cout<<"Ronda n° "<<ronda<<endl;
-        cout<<"Puntaje de "<<jugador1<<": "<<puntajeTotal1<<endl;
-        cout<<"Lanzamiento n° "<<lanzamiento<<endl;
-        cout<<endl;
-        cout<<endl;
-        cout<< "Presione enter para tirar los dados...";
-        cout<<endl;
-        rlutil::anykey();
+         Recuadro();
+        rlutil::locate(10,3);
+        cout<<"Turno de "<<jugador1;
+        rlutil::locate(5,7);
+        cout<<"Ronda N: "<<ronda;
+        rlutil::locate(5,9);
+        cout<<"Puntaje de "<<jugador1<<": "<<puntajeTotal1;
+        rlutil::locate(5,11);
+        cout<<"Lanzamiento N: "<<lanzamiento;
+
+        rlutil::locate(2,19);
+        system("pause");
+        system("cls");
         //cargarDados(vecDados);
         tirarDados (vecDados, tam);
+         Recuadromenu();
+        rlutil::locate(3,3);
+        cout<<"Lanzamiento N: "<<lanzamiento;
+        rlutil::locate(24,3);
+        cout<<"Ronda N: "<<ronda;
+
+        rlutil::locate(3,8);
         mostrarDados(vecDados, tam);
         puntajeRonda=funcionPuntos(vecDados);
 
         if (puntajeRonda==50 && lanzamiento==1){
-                rlutil::cls();
-                cout<<"GENERALA SERVIDA!! FIN DEL JUEGO, EL GANADOR ES: "<<jugador1<<endl;
-                cout<<endl;
-                cout<<endl;
+                system("pause");
+                system("cls");
+                rlutil::setBackgroundColor(rlutil::WHITE);
+                rlutil::setColor(rlutil::BLACK);
+                Recuadro();
+                rlutil::locate(2,8);
+                cout<<"GENERALA SERVIDA!! FIN DEL JUEGO, EL GANADOR ES: "<<jugador1;
+                rlutil::setBackgroundColor(rlutil::MAGENTA);
+                rlutil::setColor(rlutil::WHITE);
                 puntajeTotal1+=100;
                 empateGeneralaServida++;
                 ronda++;
                 lanzamiento=3;
                 generalaServida=true;
-                rlutil::anykey();
+                rlutil::locate(2,19);
+                system("pause");
         }
-            cout<<endl;
-            cout<<endl;
+
         while (lanzamiento<3){
-            cout<<"¿Continuar lanzando?: "<<endl;
+            rlutil::locate(3,11);
+            cout<<"Continuar lanzando S/N: ";
             cin>>continuarLanzando;
             switch (continuarLanzando){
             case 'S':
             case 's':
                 lanzamiento++;
-                cout<<"¿Cuántos dados desea volver a lanzar?: "<<endl;
+                rlutil::locate(3,12);
+                cout<<"Cuantos dados desea volver a lanzar?: ";
                 cin>>cant;
                 if (cant==5){
                     tirarDados(vecDados, tam);
                 }
                 else {
-                      for (i=0;i<cant;i++){
-                        cout<<"¿Cuál dado?: "<<endl;
+                    for (i=0;i<cant;i++){
+                        rlutil::locate(3,13+i);
+                        cout<<"Cual dado?: ";
                         cin>>cualDado;
                         vecDados[cualDado-1]=(rand()%6)+1;
                         }
-                    }
-                    mostrarDados(vecDados, 5);
 
-                    if (lanzamiento==3){
-                        puntajeRonda=funcionPuntos(vecDados);
                     }
-                    cout<<endl;
-                    cout<<"Lanzamiento n° "<<lanzamiento<<endl;
-                    cout<<endl;
+
+                    system("cls");
+                    Recuadromenu();
+                    rlutil::locate(3,3);
+                    cout<<"Lanzamiento N: "<<lanzamiento;
+                    rlutil::locate(24,3);
+                    cout<<"Ronda N: "<<ronda;
+                    rlutil::locate(3,8);
+                    mostrarDados(vecDados, tam);
+                    if (lanzamiento==3){
+                    puntajeRonda=funcionPuntos(vecDados);}
+                    rlutil::locate(2,19);
+                    system("pause");
                     cant=5;
             break;
 
             case 'n':
             case 'N':
 
-                cout<< "Presione enter para continuar...";
-                system("pause");
-                cout<<endl;
+                system("cls");
+
                 while ( getchar() != '\n');
 
                 lanzamiento=3;
                 puntajeRonda=funcionPuntos(vecDados);
-
-                cout<<endl;
                 break;
             }
         }
@@ -684,93 +710,114 @@ while (ronda<=10 && generalaServida==false){
         puntajeTotal1+=puntajeRonda;
 
         if (generalaServida==false){
-        cout<< "Fin del turno de "<<jugador1<<endl;
-        cout<<endl;
-        cout<<"Ronda n° "<<ronda<<endl;
-        cout<<"Puntaje de la ronda de "<<jugador1<<": "<<puntajeRonda<<endl;
-        cout<<"Puntaje total de "<<jugador1<<": "<<puntajeTotal1<<endl;
-        cout<<"Puntaje total de "<<jugador2<<": "<<puntajeTotal2<<endl;
-        cout<<endl;
-        cout<<"Próximo turno de "<<jugador2<<endl;
-
-        cout<< "Presione enter para continuar...";
-        cin.ignore();
+         Recuadro();
+        rlutil::locate(10,3);
+        cout<< "Fin del turno de: "<<jugador1;
+        rlutil::locate(5,6);
+        cout<<"Ronda N: "<<ronda;
+        rlutil::locate(5,8);
+        cout<<"Puntaje de la ronda de "<<jugador1<<": "<<puntajeRonda;
+        rlutil::locate(5,11);
+        cout<<"Puntaje total de "<<jugador1<<": "<<puntajeTotal1;
+        rlutil::locate(5,13);
+        cout<<"Puntaje total de "<<jugador2<<": "<<puntajeTotal2;
+        rlutil::locate(5,16);
+        cout<<"Proximo turno de "<<jugador2;
+        rlutil::locate(2,19);
         system("pause");
-        cout<<endl;
-        while ( getchar() != '\n');
-
-        }
-
-
+        system("cls");
+        while ( getchar() != '\n');}
         lanzamiento=1;
         puntajeRonda=0;
 
 
-        cout<<endl;
-
         while (lanzamiento<3){
-        cout<<"Turno de "<<jugador2<<endl;
-        cout<<"Ronda n° "<<ronda<<endl;
-        cout<<"Puntaje de "<<jugador2<<": "<<puntajeTotal2<<endl;
-        cout<<"Lanzamiento n° "<<lanzamiento<<endl;
-        cout<<endl;
-        cout<<endl;
-        cout<< "Presione enter para tirar los dados...";
-        rlutil::anykey();
-        cout<<endl;
+        Recuadro();
+        rlutil::locate(10,3);
+        cout<<"Turno de "<<jugador2;
+        rlutil::locate(5,7);
+        cout<<"Ronda N: "<<ronda;
+        rlutil::locate(5,9);
+        cout<<"Puntaje de "<<jugador2<<": "<<puntajeTotal2;
+        rlutil::locate(5,11);
+        cout<<"Lanzamiento N: "<<lanzamiento;
+        rlutil::locate(2,19);
+        system("pause");
+        system("cls");
 
         //cargarDados(vecDados);
         tirarDados (vecDados, tam);
+        Recuadromenu();
+        rlutil::locate(3,3);
+        cout<<"Lanzamiento N: "<<lanzamiento;
+        rlutil::locate(24,3);
+        cout<<"Ronda N: "<<ronda;
+
+        rlutil::locate(3,8);
         mostrarDados(vecDados, tam);
         puntajeRonda=funcionPuntos(vecDados);
          if (puntajeRonda==50 && lanzamiento==1){
-                rlutil::cls();
-                cout<<"GENERALA SERVIDA!! FIN DEL JUEGO, EL GANADOR ES: "<<jugador2<<endl;
-                cout<<endl;
-                cout<<endl;
+                system("pause");
+               system("cls");
+                rlutil::setBackgroundColor(rlutil::WHITE);
+                rlutil::setColor(rlutil::BLACK);
+                Recuadro();
+                rlutil::locate(2,8);
+                cout<<"GENERALA SERVIDA!! FIN DEL JUEGO, EL GANADOR ES: "<<jugador2;
+                rlutil::setBackgroundColor(rlutil::MAGENTA);
+                rlutil::setColor(rlutil::WHITE);
                 puntajeTotal2+=100;
+                empateGeneralaServida++;
                 ronda++;
                 lanzamiento=3;
-                empateGeneralaServida++;
                 generalaServida=true;
-                rlutil::anykey();
+                rlutil::locate(2,19);
+                system("pause");
             }
-            cout<<endl;
-            cout<<endl;
+
         while (lanzamiento<3){
-            cout<<"¿Continuar lanzando?: "<<endl;
+                rlutil::locate(3,11);
+            cout<<"Continuar lanzando S/N: ";
             cin>>continuarLanzando;
             switch (continuarLanzando){
             case 'S':
             case 's':
                 lanzamiento++;
-                cout<<"¿Cuántos dados desea volver a lanzar?: "<<endl;
+                rlutil::locate(3,12);
+                cout<<"Cuantos dados desea volver a lanzar?: ";
                 cin>>cant;
                 if (cant==5){
                     tirarDados(vecDados, tam);
                 }
                 else {
-                      for (i=0;i<cant;i++){
-                        cout<<"¿Cuál dado?: "<<endl;
+                    for (i=0;i<cant;i++){
+                        rlutil::locate(3,13+i);
+                        cout<<"Cual dado?: ";
                         cin>>cualDado;
                         vecDados[cualDado-1]=(rand()%6)+1;
                         }
+
                     }
-                    mostrarDados(vecDados, 5);
+
+                    system("cls");
+                    Recuadromenu();
+                    rlutil::locate(3,3);
+                    cout<<"Lanzamiento N: "<<lanzamiento;
+                    rlutil::locate(24,3);
+                    cout<<"Ronda N: "<<ronda;
+                    rlutil::locate(3,8);
+                    mostrarDados(vecDados, tam);
                     if (lanzamiento==3){
-                        puntajeRonda=funcionPuntos(vecDados);
-                    }
-                    cout<<endl;
-                    cout<<"Lanzamiento n° "<<lanzamiento<<endl;
-                    cout<<endl;
+                    puntajeRonda=funcionPuntos(vecDados);}
+                    rlutil::locate(2,19);
+                    system("pause");
                     cant=5;
             break;
 
             case 'n':
             case 'N':
-                cout<< "Presione enter para continuar...";
-                rlutil::anykey();
-                cout<<endl;
+                system("cls");
+
                 lanzamiento=3;
                 puntajeRonda=funcionPuntos(vecDados);
 
@@ -782,23 +829,25 @@ while (ronda<=10 && generalaServida==false){
         puntajeTotal2+=puntajeRonda;
 
         if (generalaServida==false){
-            cout<< "Fin del turno de "<<jugador2<<endl;
-            cout<<endl;
-            cout<<"Fin de la ronda n° "<<ronda<<endl;
-            cout<<"Puntaje de la ronda de "<<jugador2<<": "<<puntajeRonda<<endl;
-            cout<<"Puntaje total de "<<jugador1<<": "<<puntajeTotal1<<endl;
-            cout<<"Puntaje total de "<<jugador2<<": "<<puntajeTotal2<<endl;
-            cout<<endl;
-            cout<<"Próximo turno de "<<jugador1<<endl;
-            ronda++;
-
-            cout<< "Presione enter para continuar...";
-            rlutil::anykey();
-            cout<<endl;
-            cout<<endl;
+            Recuadro();
+        rlutil::locate(10,3);
+        cout<< "Fin del turno de: "<<jugador2;
+        rlutil::locate(5,6);
+        cout<<"Ronda N: "<<ronda;
+        rlutil::locate(5,8);
+        cout<<"Puntaje de la ronda de "<<jugador2<<": "<<puntajeRonda;
+        rlutil::locate(5,11);
+        cout<<"Puntaje total de "<<jugador2<<": "<<puntajeTotal2;
+        rlutil::locate(5,13);
+        cout<<"Puntaje total de "<<jugador1<<": "<<puntajeTotal1;
+        rlutil::locate(5,16);
+        cout<<"Proximo turno de "<<jugador1;
+        ronda++;
+        rlutil::locate(2,19);
+        system("pause");
+        system("cls");
         }
         }
-
         if (generalaServida==false) {
             lanzamiento=1;
             puntajeRonda=0;
@@ -806,36 +855,43 @@ while (ronda<=10 && generalaServida==false){
 
     }
        if (ronda>=11 || generalaServida==true) {
-            cout<<"FIN DEL JUEGO"<<endl;
-            cout<<endl;
-            cout<<endl;
-            cout<<endl;
+            Recuadromenu();
+            rlutil::setBackgroundColor(rlutil::WHITE);
+            rlutil::setColor(rlutil::BLACK);
+            rlutil::locate(13,3);
+            cout<<"FIN DEL JUEGO";
+
             if (empateGeneralaServida==2 || puntajeTotal1==puntajeTotal2){
-                cout<<"EMPATE"<<endl;
-                cout<<endl;
-                cout<<"LOS JUGADORES QUE HAN EMPATADO SON: "<<jugador1<<" Y "<<jugador2<<endl;
-                cout<<endl;
+                rlutil::locate(15,8);
+                cout<<"EMPATE";
+                rlutil::locate(3,10);
+                cout<<"LOS JUGADORES SON: "<<jugador1<<" Y "<<jugador2;
+
             }
             else {
                 if (puntajeTotal1>puntajeTotal2){
                     puntajeParaMain=puntajeTotal1;
-                    cout<<endl;
-                    cout<<"EL GANADOR DE ESTE JUEGO ES: "<<jugador1<<endl;
-                    cout<<endl;
-                    cout<<"LA CANTIDAD DE RONDAS FUE DE: "<<ronda-1<<endl;
-                    cout<<endl;
+                    rlutil::locate(5,8);
+                    cout<<"EL GANADOR DE ESTE JUEGO ES: "<<jugador1;
+                   rlutil::locate(5,10);
+                    cout<<"LA CANTIDAD DE RONDAS FUE DE: "<<ronda-1;
 
                 }
                 else {
                     puntajeParaMain=puntajeTotal2;
-                    cout<<endl;
+                    rlutil::locate(5,8);
                     cout<<"EL GANADOR DE ESTE JUEGO ES: "<<jugador2<<endl;
-                    cout<<endl;
+                    rlutil::locate(5,10);
                     cout<<"LA CANTIDAD DE RONDAS FUE DE: "<<ronda-1<<endl;
-                    cout<<endl;
-                }
+
             }
         }
+       }
+        rlutil::locate(2,19);
+        system("pause");
+        system("cls");
+        rlutil::setBackgroundColor(rlutil::MAGENTA);
+        rlutil::setColor(rlutil::WHITE);
 return puntajeParaMain;
 }
 
@@ -845,7 +901,6 @@ void cargarDados (int vecDados[]){
     for(i=0;i<5;i++){
         cout<<"INGRESE NUMERO DE DADO "<<i+1<<": ";
         cin>>vecDados[i];
-        cout<<endl;
     }
 }
 
@@ -873,3 +928,4 @@ void tirarDados(int vecDados[], int tam){
 
 
 #endif FUNCIONES_GENERALA_H_INCLUDED
+
