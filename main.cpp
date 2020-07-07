@@ -11,37 +11,36 @@ int main(){
 
 int  opcion, puntajeMaximo=0, puntaje1, puntaje2;
 bool bandjuego1=false;
-rlutil::setBackgroundColor(rlutil::MAGENTA);
-rlutil::setColor(rlutil::WHITE);
-Recuadro();
-rlutil::locate(5,3);
+setBackgroundColor(RED);
+setColor(WHITE);
+recuadro(1,1,60,20);
+rlutil::locate(14,4);
 cout<<"BIENVENIDO AL JUEGO DE LA GENERALA ";
 
 dados();
 
-rlutil::setBackgroundColor(rlutil::MAGENTA);
+setBackgroundColor(RED);
 rlutil::setColor(rlutil::WHITE);
-rlutil::locate(2,19);
+rlutil::locate(2,20);
 system("pause");
 system("cls");
 while(true){
-    Recuadromenu();
-    rlutil::locate(16,3);
+    recuadro(1,1,60,20);
+    recuadro(8,4,46,15);
+    rlutil::locate(23,3);
     cout<<"MENU DEL JUEGO";
-    rlutil::locate(3,7);
+    rlutil::locate(11,7);
     cout<<"1- JUEGO NUEVO: UN JUGADOR ";
-    rlutil::locate(3,9);
+    rlutil::locate(11,9);
     cout<<"2- JUEGO NUEVO: DOS JUGADORES ";
-    rlutil::locate(3,11);
+    rlutil::locate(11,11);
     cout<<"3- PUNTUACION MAS ALTA";
-    rlutil::locate(3,13);
+    rlutil::locate(11,13);
     cout<<"4- SALIR";
-    rlutil::locate(3,15);
-    cout<<endl<<"| ELIJA UNA OPCION: ";
+    rlutil::locate(11,15);
+    cout<<"ELIJA UNA OPCION: ";
     cin>>opcion;
-
-
-   system("cls");
+system("cls");
 
 
     switch(opcion){
@@ -75,10 +74,11 @@ while(true){
             break;
 
         case 3:
-            Recuadro();
-            rlutil::locate(3,7);
+            recuadro(1,1,60,20);
+            recuadro(8,4,46,15);
+            rlutil::locate(15,10);
             cout<<"La puntuacion mas alta es de: "<<puntajeMaximo;
-            rlutil::locate(2,19);
+            rlutil::locate(2,20);
             system("pause");
             system("cls");
             break;
@@ -88,13 +88,13 @@ while(true){
             break;
 
         default:
-            Recuadro();
-            rlutil::locate(2,5);
-            cout<<"Opción es incorrecta. Por favor ingrese enter y vuelva a ingresar una opción..."<<endl;
+            recuadro(1,1,60,20);
+            rlutil::locate(15,10);
+            cout<<"Opcion incorrecta";
+            locate(2,20);
             system("pause");
             system("cls");
             break;
-
         }
     }
 }
